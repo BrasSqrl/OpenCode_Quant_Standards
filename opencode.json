@@ -1,0 +1,68 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "skill": {
+      "*": "ask",
+      "model-review": "allow",
+      "leakage-audit": "allow",
+      "experiment-note": "allow",
+      "promotion-readiness": "allow",
+      "feature-contract": "allow",
+      "deliverables-check": "allow"
+    }
+  },
+  "agent": {
+    "build": {
+      "permission": {
+        "task": {
+          "*": "ask",
+          "general": "allow",
+          "explore": "allow",
+          "quant-reviewer": "allow",
+          "quant-data-auditor": "allow",
+          "quant-implementer": "allow"
+        }
+      }
+    },
+    "plan": {
+      "permission": {
+        "task": {
+          "*": "ask",
+          "explore": "allow",
+          "quant-reviewer": "allow",
+          "quant-data-auditor": "allow"
+        }
+      }
+    },
+    "quant-build": {
+      "color": "accent",
+      "permission": {
+        "task": {
+          "*": "ask",
+          "general": "allow",
+          "explore": "allow",
+          "quant-reviewer": "allow",
+          "quant-data-auditor": "allow",
+          "quant-implementer": "allow"
+        }
+      }
+    },
+    "quant-plan": {
+      "color": "info",
+      "permission": {
+        "task": {
+          "*": "ask",
+          "explore": "allow",
+          "quant-reviewer": "allow",
+          "quant-data-auditor": "allow"
+        }
+      }
+    }
+  },
+  "instructions": [
+    "instructions/core/01-operating-principles.md",
+    "instructions/core/02-python-engineering.md",
+    "instructions/core/03-quantitative-model-controls.md",
+    "instructions/project/01-repository-context.md"
+  ]
+}
