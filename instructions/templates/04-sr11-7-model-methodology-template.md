@@ -1,198 +1,190 @@
 # SR 11-7-Style Model Methodology Document Template
 
-Use this template when drafting a model methodology document following the user-provided SR 11-7-style table of contents. Preserve numbering unless the user or institution-provided template requires a different format.
+Use this template when drafting a model methodology document aligned to SR 11-7-style model risk management expectations or successor internal policy. This is a consolidated structure: it preserves the substance of the longer table of contents while reducing duplicate headings and improving document flow.
 
 Important:
 
-- Delete optional sections only when the institution's template permits deletion and evidence supports non-applicability.
-- If evidence is missing, keep the section and mark it with `[EVIDENCE NEEDED: ...]`.
-- If a section is not applicable, write `[NOT APPLICABLE - BASIS: ...]`.
-- Maintain an evidence index linking major claims to source artifacts.
+- Follow the institution's approved template if one is provided.
+- Treat this file as a drafting scaffold, not a regulatory safe harbor.
+- If evidence is missing, keep the relevant section and mark it with `[EVIDENCE NEEDED: ...]`.
+- If a topic is not applicable, write `[NOT APPLICABLE - BASIS: ...]`.
+- Maintain an evidence index linking material claims to source artifacts.
+- Do not invent approvals, validation findings, monitoring thresholds, model history, or regulatory applicability.
 
-## Part One: Technical Documentation
+## 1 Executive Summary and Model Identification
 
-### 1 Executive Summary
+Purpose: give approvers, validators, auditors, and senior management a concise view of what the model is, how it is used, whether it is ready for use, and what material risks remain.
 
-#### 1.1 Model Purpose and Intended Use
+Include:
 
-#### 1.2 Artificial Intelligence/Machine Learning ("AI/ML")
+- model name, inventory ID, version, owner, developer, user group, and effective date
+- model purpose, intended use, approved use restrictions, and prohibited uses
+- model risk tier, materiality, and business criticality
+- AI/ML classification and explainability posture, if applicable
+- final model summary and primary methodology
+- key performance results and benchmark comparison
+- key assumptions, limitations, weaknesses, and compensating controls
+- model history, change log, predecessor model comparison, and related MRAs
+- approval status, effective challenge summary, and open approval conditions
+- vendor or third-party dependency summary, if applicable
 
-#### 1.3 Summary of Final Model
+## 2 Business Context, Scope, and Interconnectedness
 
-#### 1.4 Summary of Model Results
+Purpose: explain the business problem, model hypothesis, population, boundaries, and connected model ecosystem.
 
-#### 1.5 Summary of Key Assumptions and Key Limitations
+Include:
 
-#### 1.6 Reporting Requirements
+- portfolio, product, business process, or decision context
+- population, segmentation, inclusion and exclusion boundaries
+- model hypothesis and expected relationship between inputs and outputs
+- model users and decisions supported
+- frequency of use and reporting requirements
+- upstream data sources, feeder models, related models, downstream models, and overlays
+- consumer compliance, fair and responsible banking, or regulatory approval considerations, if applicable
 
-#### 1.7 Model History
+## 3 Data, Population, and Preparation
 
-#### 1.8 Model Change Log
+Purpose: document data suitability, lineage, quality, transformations, and any differences between the original population and final modeling population.
 
-#### 1.9 Review and Effective Challenge Summary
+Include:
 
-#### 1.10 Model Approval
+- data sources, ownership, lineage, and data flow diagram or narrative
+- observation window, outcome window, population definition, and sampling approach
+- external data, vendor data, or third-party data applicability
+- data quality assessment, known issues, and remediation
+- missing-value handling, imputation, cleaning, exclusions, adjustments, aggregation, and transformations
+- key statistics for original data, final modeling data, and important segments
+- comparison of original population, development sample, validation sample, and final production population
+- data controls, input controls, reconciliation checks, and production data dependencies
 
-#### 1.11 Comparison to Predecessor Models [if applicable - delete if not applicable]
+## 4 Methodology and Model Development
 
-#### 1.12 Related MRA [if applicable]
+Purpose: make the model design, theoretical basis, development choices, and final selection understandable and challengeable.
 
-#### 1.13 Vendor Model and Coupa Risk Information [if applicable]
+Include:
 
-### 2 Model Context
+- conceptual theory, model logic, and design rationale
+- materiality thresholds and business rules
+- variables considered, transformations considered, and variable selection process
+- statistical analysis used for selection
+- alternate approaches and rejected models
+- business input or expert judgment used in development
+- final model selected and rationale for selection
+- principal formulas, algorithms, objective functions, or decision rules
+- hyperparameter tuning, training procedure, and reproducibility controls, if applicable
+- explainability method and feature-importance evidence, if applicable
+- model update, recalibration, redevelopment, or benchmarking approach, if applicable
 
-#### 2.1 Portfolio (or Business) Context
+## 5 Validation, Performance, and Outcomes Analysis
 
-#### 2.2 Portfolio (or Business) Segmentation
+Purpose: consolidate evidence that the model is conceptually sound, empirically supported, independently challenged, and performing within acceptable thresholds.
 
-#### 2.3 Model Hypothesis
+Include:
 
-#### 2.4 Interconnectedness - Related, Feeder Models, or Downstream Models
+- validation scope, independence, date, reviewer, and validation status
+- conceptual soundness assessment
+- standard evaluation statistics, diagnostics, and testing results
+- out-of-sample, out-of-time, cross-validation, or backtesting evidence
+- outcomes analysis comparing model output to realized outcomes
+- benchmark, challenger, predecessor, or industry-data comparison
+- sensitivity analysis, stability analysis, stress or scenario testing, and segment performance
+- threshold breaches, exceptions, overrides, and unresolved validation findings
+- limitations of validation evidence and compensating controls
 
-### 3 Input Data Analysis
+## 6 Assumptions, Limitations, Weaknesses, and Use Constraints
 
-#### 3.1.1 Data Source Description
+Purpose: make model risk visible and connect limitations to allowed use, controls, monitoring, and management reporting.
 
-#### 3.1.2 Data Flow Chart
+Include:
 
-#### 3.1.3 Data Quality and Issues
+- key assumptions and their rationale
+- known limitations, weaknesses, data constraints, and methodology constraints
+- conditions under which model use is unreliable or prohibited
+- compensating controls, overlays, adjustments, or management judgment
+- residual risks requiring management awareness
+- required remediation, redevelopment triggers, or restrictions on use
 
-#### 3.1.4 Applicability of External Data [if applicable]
+## 7 Implementation, Systems Integration, and Production Controls
 
-#### 3.1.5 Key Statistics Summary
+Purpose: document how the model is implemented, controlled, tested, and operated in production.
 
-#### 3.2 Data Preparation
+Include:
 
-#### 3.2.1 Missing Values and Imputation [if applicable]
+- implementation plan and deployment architecture
+- configuration management database or inventory references
+- production system integration, batch or real-time workflow, and dependency map
+- user acceptance testing results and implementation defects
+- open implementation issues and remediation owners
+- model access controls and segregation of duties
+- input controls, processing controls, output controls, and reconciliation controls
+- change management, release management, rollback, and incident procedures
+- vendor documentation, third-party contingency plans, and Coupa or third-party risk information, if applicable
 
-#### 3.2.2 Data Cleaning and Adjustments [if applicable]
+## 8 User Procedures, Reporting, and Management Use
 
-#### 3.2.3 Data Exclusions [if applicable]
+Purpose: show how model outputs are consumed, reported, interpreted, and controlled by business users.
 
-#### 3.2.4 Data Aggregation [if applicable]
+Include:
 
-#### 3.2.5 Sampling Methodology [if applicable]
+- user guidelines, operating procedures, and interpretation guidance
+- management reports, report recipients, and reporting frequency
+- output definitions, thresholds, alerts, and escalation points
+- override procedures, overlay governance, and manual adjustment controls
+- end user committee name, references, and decision rights
+- training, communication, and handoff requirements for model users
 
-#### 3.2.6 Comparison of Final and Original Data
+## 9 Ongoing Monitoring and Model Lifecycle Management
 
-#### 3.3 Additional Data Sources [if applicable - delete if not applicable]
+Purpose: define how the organization will detect performance degradation, data drift, invalid assumptions, operational issues, and needed model changes.
 
-#### 3.3.1 Key Statistics Summary
+Include:
 
-### 4 Key Theoretical Concepts and Methodology
+- models addressed in the monitoring plan
+- risk factor monitoring and metric monitoring
+- monitoring frequency, ownership, and submission requirements to MRM
+- thresholds, tolerances, traffic-light rules, and breach escalation
+- population stability, data quality, performance, calibration, bias/fairness, explainability, and usage monitoring as applicable
+- overlays, temporary adjustments, and management action triggers
+- periodic review, annual review, recalibration, redevelopment, retirement, and change-log requirements
 
-#### 4.1 Model Logic and Design
+## 10 Governance, Approvals, and Open Items
 
-#### 4.2 Materiality Thresholds
+Purpose: make ownership, accountability, approval status, and unresolved work explicit.
 
-#### 4.3 Standard Evaluation Statistics or Testing Results
+Include:
 
-#### 4.4 Alternate Approaches Considered
+- model owner, developer, validator, user, technology owner, and control owner roles
+- approval bodies, approval dates, conditions, and expiration or review cycle
+- effective challenge summary and outstanding challenge items
+- related MRAs, audit findings, regulatory commitments, or policy exceptions
+- open issues, remediation owners, due dates, and blocking status
+- final readiness decision or distribution restrictions
 
-### 5 Model Development Process
-
-#### 5.1 Variables Considered
-
-#### 5.2 Variable Transformations Considered
-
-#### 5.3 Variable Selection Process
-
-#### 5.4 Statistical Analysis for Selection
-
-#### 5.5 Rejected Models
-
-#### 5.6 Business Input in Selection
-
-#### 5.7 Final Model Selected
-
-#### 5.7.1 Principal Formulas
-
-#### 5.8 Final Model Outcome and Performance Analysis
-
-#### 5.8.1 Statistical Diagnostics
-
-#### 5.8.2 Back-test (Out-of-Sample, Out-of-Time, K-Fold) Performance
-
-#### 5.8.3 Model Sensitivities
-
-#### 5.9 Hyper-parameter Tuning [if applicable]
-
-#### 5.10 Explainability [if applicable]
-
-#### 5.11 Model Update [if applicable]
-
-#### 5.12 Benchmark to Industry Data [if applicable - delete if not applicable]
-
-### 6 Final Model Key Assumptions, Limitations and Weaknesses
-
-### 7 Model Implementation / Systems Integration
-
-#### 7.1 Implementation Plan
-
-#### 7.2 Configuration Management Database
-
-#### 7.3 System Implementation
-
-#### 7.4 User Acceptance Testing (UAT) Results
-
-#### 7.5 Open Issues Related to Model Implementation
-
-## Part Two: Model Governance and Procedures
-
-### 1 User Guidelines or Operating Procedures
-
-### 2 Management Reporting of Model Outputs
-
-### 3 Input Controls
-
-### 4 Production Controls
-
-#### 4.1 Model Change Management
-
-#### 4.2 Model Access Controls
-
-#### 4.3 Other Model Production Controls
-
-### 5 Model Output Controls
-
-### 6 Consumer Compliance / Fair and Responsible Banking Considerations
-
-### 7 Regulatory Approval [if applicable]
-
-### 8 Vendor Models
-
-#### 8.1 Vendor Documentation
-
-#### 8.2 Contingency Plan for Third Party Models
-
-## Part Three: Ongoing Performance Monitoring Plan
-
-### 1 Model(s) Addressed in Plan
-
-### 2 Monitoring
-
-#### 2.1 Risk Factor Monitoring
-
-#### 2.2 Metric Monitoring
-
-### 3 Frequency of Ongoing Performance Monitoring and Submission to MRM
-
-### 4 End User Committee (EUC) Name and References
-
-### 5 Escalation Processes
-
-### 6 Overlays
-
-## Appendix 1 Template Version Change History
-
-## Evidence Index
+## Appendix A Evidence Index
 
 | Section | Claim or Content Area | Source Artifact | Owner | Status |
 | --- | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD | Needed |
 
-## Open Items
+## Appendix B Template Version Change History
 
-| Section | Gap | Required Owner | Required Evidence | Blocking? |
+| Version | Date | Author | Summary of Changes | Approval |
 | --- | --- | --- | --- | --- |
 | TBD | TBD | TBD | TBD | TBD |
+
+## Appendix C Optional Long-Form Crosswalk
+
+Use this crosswalk only when a reviewer needs to map the consolidated structure back to the longer institution-provided table of contents.
+
+| Consolidated Section | Long-Form Topics Covered |
+| --- | --- |
+| 1 Executive Summary and Model Identification | executive summary, intended use, AI/ML, final model summary, results, assumptions, reporting, history, change log, approvals, predecessor model, MRA, vendor summary |
+| 2 Business Context, Scope, and Interconnectedness | portfolio context, segmentation, hypothesis, feeder and downstream models, compliance and regulatory applicability |
+| 3 Data, Population, and Preparation | data sources, data flow, quality, external data, statistics, cleaning, exclusions, aggregation, sampling, original versus final data |
+| 4 Methodology and Model Development | theory, logic, thresholds, variables, transformations, selection, rejected models, business input, final model, formulas, tuning, explainability, updates, benchmarks |
+| 5 Validation, Performance, and Outcomes Analysis | diagnostics, backtesting, out-of-time testing, K-fold testing, sensitivity, outcomes analysis, independent validation, unresolved findings |
+| 6 Assumptions, Limitations, Weaknesses, and Use Constraints | final assumptions, limitations, weaknesses, restrictions, compensating controls |
+| 7 Implementation, Systems Integration, and Production Controls | implementation plan, CMDB, system implementation, UAT, open implementation issues, input controls, production controls, access controls, vendor controls |
+| 8 User Procedures, Reporting, and Management Use | user guidelines, management reporting, output controls, overlays, EUC references |
+| 9 Ongoing Monitoring and Model Lifecycle Management | monitoring plan, risk factors, metrics, frequency, escalation, overlays, model update lifecycle |
+| 10 Governance, Approvals, and Open Items | approvals, effective challenge, MRAs, open items, ownership, readiness decision |

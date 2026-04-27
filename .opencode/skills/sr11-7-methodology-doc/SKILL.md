@@ -11,7 +11,8 @@ metadata:
 ## What I Do
 
 - Assemble model methodology documentation from available evidence
-- Follow the SR 11-7-style table of contents in `instructions/templates/04-sr11-7-model-methodology-template.md`
+- Follow the consolidated SR 11-7-style methodology structure in `instructions/templates/04-sr11-7-model-methodology-template.md`
+- Use the appendix crosswalk when a reviewer needs traceability back to a longer institution-provided table of contents
 - Track evidence used for material claims
 - Mark missing evidence, unresolved approvals, optional sections, and non-applicable sections clearly
 
@@ -19,7 +20,7 @@ metadata:
 
 - SR 11-7 was issued on April 4, 2011.
 - Federal Reserve SR 26-2, dated April 17, 2026, says revised interagency guidance supersedes and replaces SR 11-7 and SR 21-8.
-- If the user specifically requests SR 11-7, follow the SR 11-7-style documentation structure, but flag that the governing policy should be confirmed against current agency guidance and internal MRM requirements.
+- If the user specifically requests SR 11-7, follow the consolidated SR 11-7-style documentation structure unless the institution provides a required long-form template, and flag that the governing policy should be confirmed against current agency guidance and internal MRM requirements.
 
 ## When To Use Me
 
@@ -38,6 +39,7 @@ Use this skill when the user asks for:
 - Use `[EVIDENCE NEEDED: ...]` for unsupported sections.
 - Use `[NOT APPLICABLE - BASIS: ...]` only when non-applicability is supported.
 - Maintain section numbering and headings unless the user provides a controlling template.
+- Prefer cohesive sections over duplicative checklist-style drafting.
 - Keep an evidence index linking material claims to source artifacts.
 - Separate developer assertions from independent validation findings.
 - Treat fair lending, consumer compliance, AI/ML, vendor, and regulatory approval sections as substantive, not boilerplate.

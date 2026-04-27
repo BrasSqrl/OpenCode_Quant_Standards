@@ -6,7 +6,8 @@ Use this playbook when the task is to draft, revise, assemble, or assess a model
 
 - SR 11-7 was issued by the Federal Reserve and OCC on April 4, 2011.
 - As of April 17, 2026, Federal Reserve SR 26-2 states that revised interagency guidance supersedes and replaces SR 11-7 and SR 21-8.
-- If the user asks specifically for SR 11-7, follow the requested SR 11-7 table of contents, but flag that the governing standard should be confirmed against current agency guidance and internal MRM policy.
+- If the user asks specifically for SR 11-7, use the consolidated SR 11-7-style template unless the institution provides a required long-form template.
+- Flag that the governing standard should be confirmed against current agency guidance and internal MRM policy.
 - Do not present the document as regulator-ready unless the user provides institutional policy, required template version, and reviewer sign-off requirements.
 
 Official references:
@@ -31,6 +32,8 @@ The methodology document should make the model understandable, challengeable, re
 - Every material claim should be traceable to a source artifact or explicitly marked as missing evidence.
 - Do not invent approvals, validation results, monitoring thresholds, business sign-offs, data lineage, model history, or regulatory applicability.
 - Preserve section numbering from the approved template unless the user instructs otherwise.
+- Prefer the consolidated template flow over the long-form checklist when both are available.
+- Use the long-form crosswalk only to prove coverage or satisfy reviewer mapping requests.
 - Mark optional sections as `Not applicable` only when the evidence supports that conclusion.
 - Use placeholders such as `[EVIDENCE NEEDED: ...]` when source material is missing.
 - Maintain a separate evidence index while drafting so reviewers can trace claims back to source files.
@@ -57,7 +60,7 @@ Before drafting, inspect or request the available artifacts:
 
 1. Confirm the governing documentation standard, template version, and intended audience.
 2. Build an evidence inventory from the repo and supplied artifacts.
-3. Create a document skeleton using `instructions/templates/04-sr11-7-model-methodology-template.md`.
+3. Create a consolidated document skeleton using `instructions/templates/04-sr11-7-model-methodology-template.md`.
 4. Fill sections only from available evidence.
 5. Add `[EVIDENCE NEEDED]` markers for missing support.
 6. Add `[NOT APPLICABLE - BASIS: ...]` only when there is evidence supporting non-applicability.
@@ -68,7 +71,7 @@ Before drafting, inspect or request the available artifacts:
 
 A good draft is:
 
-- structured exactly to the approved table of contents
+- structured to the approved template or the consolidated SR 11-7-style flow
 - technically precise enough for effective challenge
 - traceable to source artifacts
 - explicit about assumptions, limitations, weaknesses, and usage constraints

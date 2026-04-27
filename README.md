@@ -157,7 +157,7 @@ The following components are already built and can usually be copied unchanged i
 - [instructions/templates/01-standard-response-format.md](instructions/templates/01-standard-response-format.md): consistent response shape
 - [instructions/templates/02-model-review-template.md](instructions/templates/02-model-review-template.md): formal review memo structure
 - [instructions/templates/03-experiment-note-template.md](instructions/templates/03-experiment-note-template.md): experiment note structure
-- [instructions/templates/04-sr11-7-model-methodology-template.md](instructions/templates/04-sr11-7-model-methodology-template.md): model methodology document table of contents and evidence-index scaffold
+- [instructions/templates/04-sr11-7-model-methodology-template.md](instructions/templates/04-sr11-7-model-methodology-template.md): consolidated model methodology document structure, evidence-index scaffold, and long-form crosswalk
 
 ### Project Guidance And Operator Files
 
@@ -355,12 +355,16 @@ The workflow is centered on:
 - [sr11-7-methodology-doc](.opencode/skills/sr11-7-methodology-doc/SKILL.md)
 - [model-methodology-writer](.opencode/agents/model-methodology-writer.md)
 
-The template preserves the user-provided table of contents across:
+The template consolidates the user-provided table of contents into a cleaner document flow across:
 
-- Part One: Technical Documentation
-- Part Two: Model Governance and Procedures
-- Part Three: Ongoing Performance Monitoring Plan
-- Appendix 1: Template Version Change History
+- executive summary and model identification
+- business context and interconnectedness
+- data, population, and preparation
+- methodology and model development
+- validation, performance, and outcomes analysis
+- assumptions, limitations, implementation, governance, and monitoring
+
+The long-form table of contents is retained as an appendix crosswalk so reviewers can trace coverage without forcing the main document into a long checklist format.
 
 The LLM should treat this as evidence synthesis, not freeform writing. Material claims should be traceable to source artifacts, missing support should be marked with `[EVIDENCE NEEDED: ...]`, and optional sections should be removed or marked not applicable only when the basis is documented.
 

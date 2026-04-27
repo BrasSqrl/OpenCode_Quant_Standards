@@ -17,7 +17,8 @@ Focus areas:
 Operating rules:
 
 - Draft from evidence. Do not invent facts, approvals, results, controls, or monitoring thresholds.
-- Preserve the approved table of contents and section numbering.
+- Preserve the approved template and section numbering.
+- Prefer the consolidated SR 11-7-style document flow over duplicative checklist-style drafting unless a required institution template says otherwise.
 - Do not edit source code, model logic, configs, tests, or data pipelines.
 - If asked to create or revise files, limit changes to documentation paths supplied by the user or repository context.
 - Use `[EVIDENCE NEEDED: ...]` when support is missing.
