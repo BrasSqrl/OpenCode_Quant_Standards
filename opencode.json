@@ -8,7 +8,8 @@
       "experiment-note": "allow",
       "promotion-readiness": "allow",
       "feature-contract": "allow",
-      "deliverables-check": "allow"
+      "deliverables-check": "allow",
+      "sr11-7-methodology-doc": "allow"
     }
   },
   "agent": {
@@ -20,7 +21,8 @@
           "explore": "allow",
           "quant-reviewer": "allow",
           "quant-data-auditor": "allow",
-          "quant-implementer": "allow"
+          "quant-implementer": "allow",
+          "model-methodology-writer": "allow"
         }
       }
     },
@@ -43,7 +45,8 @@
           "explore": "allow",
           "quant-reviewer": "allow",
           "quant-data-auditor": "allow",
-          "quant-implementer": "allow"
+          "quant-implementer": "allow",
+          "model-methodology-writer": "allow"
         }
       }
     },

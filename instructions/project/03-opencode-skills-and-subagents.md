@@ -18,6 +18,7 @@ The local skills are:
 - `promotion-readiness`
 - `feature-contract`
 - `deliverables-check`
+- `sr11-7-methodology-doc`
 
 Use skills when you want the same session or agent to load a focused workflow without switching to another agent.
 
@@ -26,6 +27,7 @@ Good fit:
 - formal model review structure
 - leakage checks
 - experiment planning and result writeups
+- model methodology documentation aligned to SR 11-7-style or successor internal MRM templates
 
 Bad fit:
 
@@ -52,6 +54,7 @@ This pack adds:
 - `@quant-reviewer`
 - `@quant-data-auditor`
 - `@quant-implementer`
+- `@model-methodology-writer`
 
 It also adds two custom primary agents:
 
@@ -79,6 +82,13 @@ Example prompts:
 - `@quant-implementer add a focused regression test for this label leakage bug`
 - `@quant-implementer update the feature pipeline to validate duplicate entity-timestamp rows`
 
+Use `@model-methodology-writer` when the task is to draft or revise a model methodology document from repo artifacts, supplied evidence, and the approved table of contents.
+
+Example prompts:
+
+- `@model-methodology-writer draft sections 1 through 3 of the model methodology document from these artifacts`
+- `@model-methodology-writer build an evidence-gap table against the SR 11-7-style template`
+
 ## How Subagent Spawning Works
 
 - You can manually invoke a subagent by `@` mentioning it in your prompt.
@@ -86,7 +96,7 @@ Example prompts:
 - Built-in primary agents are `build` and `plan`.
 - Built-in subagents are `general` and `explore`.
 - Custom primary agents in this pack are `quant-build` and `quant-plan`.
-- Custom subagents in this pack are `quant-reviewer`, `quant-data-auditor`, and `quant-implementer`.
+- Custom subagents in this pack are `quant-reviewer`, `quant-data-auditor`, `quant-implementer`, and `model-methodology-writer`.
 
 ## Recommended Multi-Agent Patterns
 
@@ -95,6 +105,7 @@ Example prompts:
 - Main agent writes code while `@quant-reviewer` checks whether the change alters model controls, evidence, or production behavior.
 - `quant-build` drives execution while `@quant-reviewer` and `@quant-data-auditor` review methodology and data controls in parallel.
 - `quant-plan` develops a read-only implementation plan while `@explore` maps code structure and `@quant-reviewer` identifies validation risks.
+- `@model-methodology-writer` drafts documentation while `@quant-reviewer` reviews methodology claims and `@quant-data-auditor` checks data-lineage claims.
 
 ## When To Add More Custom Subagents
 

@@ -150,12 +150,14 @@ The following components are already built and can usually be copied unchanged i
 - [instructions/playbooks/03-experimentation-and-backtesting.md](instructions/playbooks/03-experimentation-and-backtesting.md): experiment and backtest discipline
 - [instructions/playbooks/04-debugging-and-refactoring.md](instructions/playbooks/04-debugging-and-refactoring.md): debugging and refactor workflow
 - [instructions/playbooks/05-data-pipelines-and-feature-engineering.md](instructions/playbooks/05-data-pipelines-and-feature-engineering.md): data and feature pipeline workflow
+- [instructions/playbooks/06-model-methodology-documentation.md](instructions/playbooks/06-model-methodology-documentation.md): SR 11-7-style methodology-document drafting workflow
 
 ### Templates
 
 - [instructions/templates/01-standard-response-format.md](instructions/templates/01-standard-response-format.md): consistent response shape
 - [instructions/templates/02-model-review-template.md](instructions/templates/02-model-review-template.md): formal review memo structure
 - [instructions/templates/03-experiment-note-template.md](instructions/templates/03-experiment-note-template.md): experiment note structure
+- [instructions/templates/04-sr11-7-model-methodology-template.md](instructions/templates/04-sr11-7-model-methodology-template.md): model methodology document table of contents and evidence-index scaffold
 
 ### Project Guidance And Operator Files
 
@@ -176,6 +178,7 @@ These are project-local skills and are intended to be available on demand.
 - [promotion-readiness](.opencode/skills/promotion-readiness/SKILL.md): merge, release, and promotion readiness workflow
 - [feature-contract](.opencode/skills/feature-contract/SKILL.md): feature and dataset contract workflow
 - [deliverables-check](.opencode/skills/deliverables-check/SKILL.md): required-artifact classification workflow
+- [sr11-7-methodology-doc](.opencode/skills/sr11-7-methodology-doc/SKILL.md): SR 11-7-style methodology-document drafting workflow
 
 ### Included Custom Agents And Subagents
 
@@ -191,6 +194,7 @@ Subagents:
 - [quant-reviewer](.opencode/agents/quant-reviewer.md): methodology and controls reviewer
 - [quant-data-auditor](.opencode/agents/quant-data-auditor.md): data and point-in-time auditor
 - [quant-implementer](.opencode/agents/quant-implementer.md): bounded implementation worker
+- [model-methodology-writer](.opencode/agents/model-methodology-writer.md): documentation writer for model methodology documents
 
 ## What Must Be Updated In A New Repository
 
@@ -212,6 +216,7 @@ At minimum, you should update:
 - validation evidence required before merge
 - data sensitivity and storage constraints
 - review, sign-off, and release requirements
+- methodology documentation standard, owner, source artifacts, output location, evidence-index format, and approval path
 
 If you fail to update that file, the pack still works as a generic control layer, but it loses most of the repo-specific value.
 
@@ -270,6 +275,7 @@ Use cases:
 - load `promotion-readiness` when a change may affect merge, release, or production readiness
 - load `feature-contract` when you need explicit schema or feature semantics
 - load `deliverables-check` when you need to know what artifacts should exist
+- load `sr11-7-methodology-doc` when drafting or gap-checking a model methodology document
 
 Use skills for:
 
@@ -331,6 +337,35 @@ Use `@quant-implementer` for:
 - focused regression fixes
 - bounded secondary implementation work
 
+Use `@model-methodology-writer` for:
+
+- drafting SR 11-7-style methodology documents
+- stitching together evidence from repository artifacts and supplied documents
+- maintaining section-level evidence gaps and open items
+- separating developer assertions from validation findings and approvals
+
+## Model Methodology Documentation
+
+This pack includes a dedicated workflow for model methodology documents because that work usually requires substantial synthesis across code, notebooks, data lineage, validation evidence, approvals, monitoring plans, and governance materials.
+
+The workflow is centered on:
+
+- [instructions/playbooks/06-model-methodology-documentation.md](instructions/playbooks/06-model-methodology-documentation.md)
+- [instructions/templates/04-sr11-7-model-methodology-template.md](instructions/templates/04-sr11-7-model-methodology-template.md)
+- [sr11-7-methodology-doc](.opencode/skills/sr11-7-methodology-doc/SKILL.md)
+- [model-methodology-writer](.opencode/agents/model-methodology-writer.md)
+
+The template preserves the user-provided table of contents across:
+
+- Part One: Technical Documentation
+- Part Two: Model Governance and Procedures
+- Part Three: Ongoing Performance Monitoring Plan
+- Appendix 1: Template Version Change History
+
+The LLM should treat this as evidence synthesis, not freeform writing. Material claims should be traceable to source artifacts, missing support should be marked with `[EVIDENCE NEEDED: ...]`, and optional sections should be removed or marked not applicable only when the basis is documented.
+
+Regulatory currency matters. SR 11-7 was issued on April 4, 2011. Federal Reserve SR 26-2, dated April 17, 2026, states that revised interagency guidance supersedes and replaces SR 11-7 and SR 21-8. If an institution still requires an SR 11-7-style table of contents, use the included workflow, but confirm the governing internal MRM policy and whether successor guidance must also be reflected.
+
 ## How To Spawn Subagents And Split Work
 
 In OpenCode, subagents can be used in two ways:
@@ -344,6 +379,7 @@ Examples of manual use:
 - `@quant-reviewer review the validation split logic`
 - `@quant-data-auditor inspect the point-in-time join assumptions`
 - `@quant-implementer add a regression test for duplicate entity-timestamp rows`
+- `@model-methodology-writer draft the model context and data analysis sections from the supplied artifacts`
 
 Recommended delegation patterns in this pack:
 
@@ -351,6 +387,7 @@ Recommended delegation patterns in this pack:
 - main implementation agent writes code while `@quant-data-auditor` audits feature joins and timestamps
 - `quant-plan` develops a plan while `@explore` maps code paths and `@quant-reviewer` identifies methodological risk
 - `quant-build` executes a change while `@quant-implementer` handles one bounded secondary task
+- `@model-methodology-writer` drafts documentation while `@quant-reviewer` challenges methodology claims and `@quant-data-auditor` checks data-lineage claims
 
 When to use a subagent:
 
@@ -381,6 +418,7 @@ The included local skills are set to `allow`:
 - `promotion-readiness`
 - `feature-contract`
 - `deliverables-check`
+- `sr11-7-methodology-doc`
 
 This means the pack is permissive for known local workflows but cautious about unfamiliar skills.
 
@@ -388,9 +426,9 @@ This means the pack is permissive for known local workflows but cautious about u
 
 The pack configures automatic task delegation so that:
 
-- built-in `build` can auto-delegate to `general`, `explore`, `quant-reviewer`, `quant-data-auditor`, and `quant-implementer`
+- built-in `build` can auto-delegate to `general`, `explore`, `quant-reviewer`, `quant-data-auditor`, `quant-implementer`, and `model-methodology-writer`
 - built-in `plan` can auto-delegate to `explore`, `quant-reviewer`, and `quant-data-auditor`
-- custom `quant-build` can auto-delegate to `general`, `explore`, `quant-reviewer`, `quant-data-auditor`, and `quant-implementer`
+- custom `quant-build` can auto-delegate to `general`, `explore`, `quant-reviewer`, `quant-data-auditor`, `quant-implementer`, and `model-methodology-writer`
 - custom `quant-plan` can auto-delegate to `explore`, `quant-reviewer`, and `quant-data-auditor`
 
 Unknown automatic task delegation targets are set to `ask`.
@@ -486,6 +524,7 @@ opencode.json
 README.md
 .opencode/
   agents/
+    model-methodology-writer.md
     quant-build.md
     quant-data-auditor.md
     quant-implementer.md
@@ -498,6 +537,7 @@ README.md
     leakage-audit/SKILL.md
     model-review/SKILL.md
     promotion-readiness/SKILL.md
+    sr11-7-methodology-doc/SKILL.md
 instructions/
   core/
     01-operating-principles.md
@@ -509,6 +549,7 @@ instructions/
     03-experimentation-and-backtesting.md
     04-debugging-and-refactoring.md
     05-data-pipelines-and-feature-engineering.md
+    06-model-methodology-documentation.md
   project/
     01-repository-context.md
     02-repository-context-example.md
@@ -520,6 +561,7 @@ instructions/
     01-standard-response-format.md
     02-model-review-template.md
     03-experiment-note-template.md
+    04-sr11-7-model-methodology-template.md
 ```
 
 ## External OpenCode Concepts This README Depends On
@@ -538,4 +580,6 @@ Official references:
 - [OpenCode Rules](https://opencode.ai/docs/rules)
 - [OpenCode Skills](https://opencode.ai/docs/skills)
 - [OpenCode Agents](https://opencode.ai/docs/agents)
+- [Federal Reserve SR 11-7](https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm)
+- [Federal Reserve SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm)
 

@@ -48,6 +48,16 @@ Minimum expected artifacts:
 - required reviewer sign-off
 - rollback or mitigation note when appropriate
 
+## Model Methodology Documentation
+
+Minimum expected artifacts:
+
+- completed methodology document using the approved table of contents
+- evidence index linking material claims to source artifacts
+- open-items table for missing evidence and pending approvals
+- explicit list of sections marked not applicable and the basis for each
+- regulatory-currency note if SR 11-7 is requested without confirming successor guidance or internal MRM policy applicability
+
 ## Operator Rule
 
 If a task touches more than one category, combine the artifact requirements rather than selecting only one line from the matrix.

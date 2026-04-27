@@ -76,3 +76,13 @@ Important:
 - Required artifacts for methodology changes: diff note, experiment note, validation memo, benchmark table
 - Required artifacts for implementation-only changes: tests, smoke output, profiling note when performance is affected
 - Release gate for production-impacting changes: no production promotion without approved validation artifacts, green CI, reproducible config, and explicit sign-off from the strategy owner
+
+## Model Methodology Documentation
+
+- Governing documentation standard: SR 11-7 format retained by internal MRM policy; verify whether SR 26-2 updates are required before final approval
+- Methodology document owner: Quantitative Research Lead
+- Approved output location: `docs/model_methodology`
+- Source artifacts for methodology documents: `configs`, `notebooks`, `reports/backtests`, `reports/validation`, `docs/approvals`, `docs/monitoring`
+- Required evidence index format: appendix evidence table with section, claim, source artifact, owner, and status
+- Required reviewer sign-off before distribution: Model Risk Management reviewer and strategy owner
+- Sections that may be omitted only if not applicable: predecessor model, related MRA, vendor model, external data, regulatory approval, overlays

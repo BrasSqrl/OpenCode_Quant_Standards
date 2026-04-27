@@ -78,3 +78,13 @@ Important:
 - Required artifacts for methodology changes: [diff note | experiment note | validation memo | benchmark table | other]
 - Required artifacts for implementation-only changes: [tests | smoke output | profiling note | other]
 - Release gate for production-impacting changes: [one line]
+
+## Model Methodology Documentation
+
+- Governing documentation standard: [SR 11-7 | SR 26-2 | internal MRM policy | other]
+- Methodology document owner: [role or team]
+- Approved output location: [path]
+- Source artifacts for methodology documents: [paths to configs, notebooks, reports, validation evidence, monitoring plans, approvals]
+- Required evidence index format: [section-level citations | appendix evidence table | other]
+- Required reviewer sign-off before distribution: [role or committee]
+- Sections that may be omitted only if not applicable: [list]

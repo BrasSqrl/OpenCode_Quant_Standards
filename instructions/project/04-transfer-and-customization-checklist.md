@@ -31,6 +31,8 @@ Use this checklist when copying this standards pack into a new repository.
 - data sensitivity rules
 - release and sign-off requirements
 - allowed or restricted external tools
+- governing model methodology documentation standard and template version
+- approved documentation output locations and evidence-index requirements
 
 ## Do Not Customize Unless You Have A Clear Reason
 

@@ -37,6 +37,15 @@ Use this file when the task involves model review, debugging suspicious performa
 - no explicit owner exists for promotion or rollback decisions
 - sensitive data appears in test fixtures, examples, or debug logs
 
+## Methodology Documentation Red Flags
+
+- the document contains unsupported claims without an evidence index
+- approvals, effective challenge, model history, or validation results are described without source artifacts
+- optional sections are deleted without a documented non-applicability basis
+- AI/ML, explainability, fair lending, vendor, or regulatory approval sections are treated as boilerplate
+- model purpose, target, horizon, population, model version, or effective date differ across sections
+- SR 11-7 is named as the governing standard without confirming current agency guidance or internal MRM policy
+
 ## Response Pattern
 
 When using this file:

@@ -54,11 +54,13 @@ Read these files only when the task requires them:
 - For experiment design, benchmarking, or backtesting: `@instructions/playbooks/03-experimentation-and-backtesting.md`
 - For debugging, optimization, or refactoring: `@instructions/playbooks/04-debugging-and-refactoring.md`
 - For data pipelines, joins, or feature engineering: `@instructions/playbooks/05-data-pipelines-and-feature-engineering.md`
+- For drafting a model methodology document aligned to SR 11-7 or successor guidance: `@instructions/playbooks/06-model-methodology-documentation.md`
 - For common failure modes and quantitative red flags: `@instructions/project/05-failure-modes-and-red-flags.md`
 - For required review artifacts and release evidence: `@instructions/project/06-deliverables-matrix.md`
 - For a consistent final structure: `@instructions/templates/01-standard-response-format.md`
 - For a formal model review memo: `@instructions/templates/02-model-review-template.md`
 - For an experiment plan or result summary: `@instructions/templates/03-experiment-note-template.md`
+- For a model methodology document table of contents: `@instructions/templates/04-sr11-7-model-methodology-template.md`
 
 ## Repository Context To Maintain
 
