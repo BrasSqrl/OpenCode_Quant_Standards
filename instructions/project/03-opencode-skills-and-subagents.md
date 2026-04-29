@@ -88,6 +88,7 @@ Example prompts:
 
 - `@model-methodology-writer draft sections 1 through 3 of the model methodology document from these artifacts`
 - `@model-methodology-writer build an evidence-gap table against the SR 11-7-style template`
+- `@model-methodology-writer use the latest Quant run under source_documents to draft a DOCX methodology document with figures and an evidence index`
 
 ## How Subagent Spawning Works
 
@@ -106,6 +107,7 @@ Example prompts:
 - `quant-build` drives execution while `@quant-reviewer` and `@quant-data-auditor` review methodology and data controls in parallel.
 - `quant-plan` develops a read-only implementation plan while `@explore` maps code structure and `@quant-reviewer` identifies validation risks.
 - `@model-methodology-writer` drafts documentation while `@quant-reviewer` reviews methodology claims and `@quant-data-auditor` checks data-lineage claims.
+- `@model-methodology-writer` assembles the DOCX while `@quant-reviewer` challenges SR 11-7 coverage and `@quant-data-auditor` verifies data-preparation claims against Quant run tables.
 
 ## When To Add More Custom Subagents
 

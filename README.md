@@ -1,6 +1,8 @@
 ﻿# Enterprise Quantitative OpenCode Standards Pack
 
-This repository is a portable control pack for `opencode`-based development workflows. Its purpose is to make large-language-model behavior more consistent, more auditable, and less repo-specific by default when teams are building, reviewing, validating, or maintaining Python-based quantitative models.
+This repository is a portable control pack for `opencode`-based development workflows. Its purpose is to make large-language-model behavior more consistent, more auditable, and less repo-specific by default when teams are building, reviewing, validating, documenting, or maintaining Python-based quantitative models.
+
+The primary high-value workflow is SR 11-7-style model methodology creation. The pack is designed to help OpenCode turn exported Quant sister-project output placed in `source_documents/` into a controlled `.docx` methodology document with citations, image captions, evidence indexes, and open-items tracking.
 
 OpenCode is the primary target. The pack also includes a small Codex compatibility layer so Codex can use the same Markdown corpus effectively when OpenCode-specific skills, subagents, and permissions are not available.
 
@@ -8,6 +10,8 @@ The pack is designed to be copied into the root of another repository and then l
 
 - always-on repository rules
 - structured quantitative engineering guidance
+- SR 11-7-style methodology-document creation guidance
+- Quant sister-project output integration guidance
 - on-demand skills for repeated workflows
 - custom agents and subagents for role-shaped work
 - permission patterns for safer automatic delegation
@@ -36,6 +40,8 @@ This pack provides a reusable baseline so that when it is copied into another re
 - repeatable workflows are available through skills
 - specialized review and implementation roles are available through custom agents and subagents
 - permission patterns reduce uncontrolled automatic delegation
+- SR 11-7-style methodology drafting can use repeatable evidence-discovery rules instead of ad hoc prompting
+- Quant Studio-style run outputs under `source_documents/` can be turned into DOCX methodology packages without treating the playbooks as pasted prompts
 
 ## Design Philosophy
 
@@ -46,6 +52,7 @@ The pack is built around a few deliberate choices:
 - Separate always-on rules from on-demand workflows.
 - Separate role-specific review work from implementation work.
 - Bias toward explicit evidence, reproducibility, and point-in-time discipline.
+- Treat methodology documentation as evidence synthesis, not prose generation.
 - Make it easy to transplant the pack into another repo with minimal editing.
 
 ## How OpenCode Uses The Pack
@@ -102,7 +109,8 @@ What it does:
 - tells Codex how to consume this OpenCode-first pack
 - explains which files are Codex-relevant
 - clarifies that OpenCode skills and agents should be treated as prompt modules when Codex is the runtime
-- routes Codex to the SR 11-7 methodology workflow and `source_documents/` evidence folder
+- routes Codex to the SR 11-7 methodology workflow and `source_documents/` Quant-output evidence folder
+- routes Codex to the Quant output integration guide when methodology work uses sister-project run artifacts, figures, or DOCX output
 
 What it does not do:
 
@@ -189,6 +197,7 @@ The following components are already built and can usually be copied unchanged i
 - [instructions/project/05-failure-modes-and-red-flags.md](instructions/project/05-failure-modes-and-red-flags.md): common quantitative red flags
 - [instructions/project/06-deliverables-matrix.md](instructions/project/06-deliverables-matrix.md): required artifacts by task type
 - [instructions/project/07-codex-compatibility.md](instructions/project/07-codex-compatibility.md): Codex-specific usage guidance for this OpenCode-first pack
+- [instructions/project/08-quant-output-integration.md](instructions/project/08-quant-output-integration.md): read-only integration rules for Quant sister-project run outputs, figures, evidence indexes, and DOCX methodology packages
 
 ### Included Skills
 
@@ -200,7 +209,7 @@ These are project-local skills and are intended to be available on demand.
 - [promotion-readiness](.opencode/skills/promotion-readiness/SKILL.md): merge, release, and promotion readiness workflow
 - [feature-contract](.opencode/skills/feature-contract/SKILL.md): feature and dataset contract workflow
 - [deliverables-check](.opencode/skills/deliverables-check/SKILL.md): required-artifact classification workflow
-- [sr11-7-methodology-doc](.opencode/skills/sr11-7-methodology-doc/SKILL.md): SR 11-7-style methodology-document drafting workflow
+- [sr11-7-methodology-doc](.opencode/skills/sr11-7-methodology-doc/SKILL.md): SR 11-7-style methodology-document drafting workflow, including Quant run evidence, DOCX output, and figure handling
 
 ### Included Custom Agents And Subagents
 
@@ -216,7 +225,7 @@ Subagents:
 - [quant-reviewer](.opencode/agents/quant-reviewer.md): methodology and controls reviewer
 - [quant-data-auditor](.opencode/agents/quant-data-auditor.md): data and point-in-time auditor
 - [quant-implementer](.opencode/agents/quant-implementer.md): bounded implementation worker
-- [model-methodology-writer](.opencode/agents/model-methodology-writer.md): documentation writer for model methodology documents
+- [model-methodology-writer](.opencode/agents/model-methodology-writer.md): documentation writer for SR 11-7-style DOCX methodology packages
 
 ## What Must Be Updated In A New Repository
 
@@ -238,8 +247,9 @@ At minimum, you should update:
 - validation evidence required before merge
 - data sensitivity and storage constraints
 - review, sign-off, and release requirements
-- methodology documentation standard, owner, source artifacts, output location, evidence-index format, and approval path
-- default `source_documents/` location for model methodology and technical documentation evidence
+- methodology documentation standard, owner, source artifacts, DOCX output location, evidence-index format, image-inventory format, and approval path
+- default `source_documents/` location for exported Quant run bundles
+- optional supplemental evidence folders, run-selection rule, and image-handling rule when methodology drafting uses Quant outputs
 
 If you fail to update that file, the pack still works as a generic control layer, but it loses most of the repo-specific value.
 
@@ -270,6 +280,166 @@ These components are intended to be reused largely unchanged across repos:
 
 Use [instructions/project/04-transfer-and-customization-checklist.md](instructions/project/04-transfer-and-customization-checklist.md) as the operational transfer checklist.
 
+## Example Folder Layout
+
+Start OpenCode from the folder that contains `AGENTS.md` and `opencode.json`. That folder is the workspace root. Put `source_documents/` directly under that same root unless [instructions/project/01-repository-context.md](instructions/project/01-repository-context.md) specifies a different path.
+
+In this pack, `source_documents/` is intended to contain the exported Quant sister-project output. It is the input evidence folder, not the generated-document output folder.
+
+For documentation-only work, use a dedicated workspace:
+
+```text
+model-methodology-workspace/          <-- start opencode here
+  AGENTS.md
+  CODEX.md
+  opencode.json
+  README.md
+  .opencode/
+    agents/
+    skills/
+  instructions/
+    core/
+    playbooks/
+    project/
+    templates/
+  source_documents/                   <-- put exported Quant run output here
+    run_YYYY-MM-DD_HH-MM-SS_UTC/
+      START_HERE.md
+      artifact_manifest.json
+      reports/
+      tables/
+      metadata/
+      config/
+      figures/
+    supplemental/                      <-- optional non-run evidence
+      approvals/
+      monitoring/
+      model_inventory/
+      policy/
+      vendor/
+  output/                             <-- optional draft output folder
+    model_methodology.docx
+    evidence_index.md
+    image_inventory.md
+    open_items.md
+```
+
+For an existing model/code repo, put this pack at the repo root and add `source_documents/` beside the code and docs:
+
+```text
+existing-model-repo/                  <-- start opencode here
+  AGENTS.md
+  CODEX.md
+  opencode.json
+  .opencode/
+    agents/
+    skills/
+  instructions/
+    core/
+    playbooks/
+    project/
+    templates/
+  source_documents/                   <-- put exported Quant run output here
+    quant_runs/
+      run_YYYY-MM-DD_HH-MM-SS_UTC/
+        START_HERE.md
+        artifact_manifest.json
+        reports/
+        tables/
+        metadata/
+        config/
+        figures/
+    supplemental/                      <-- optional non-run evidence
+      approvals/
+      monitoring/
+      model_inventory/
+      policy/
+      vendor/
+  src/
+  configs/
+  notebooks/
+  reports/
+  docs/
+  tests/
+```
+
+In both layouts:
+
+- `AGENTS.md`, `opencode.json`, `.opencode/`, and `instructions/` come from this standards pack.
+- `source_documents/` contains the exported Quant output the LLM should use to write the model methodology or technical document.
+- `source_documents/supplemental/` can hold non-run evidence such as approvals, inventory records, policy decisions, monitoring thresholds, or vendor materials.
+- OpenCode should be launched from the workspace root, not from inside `source_documents/`.
+- Generated drafts can go in `output/`, `docs/model_methodology/`, or another path recorded in [instructions/project/01-repository-context.md](instructions/project/01-repository-context.md).
+
+### Quant Output Layout
+
+For the current intended workflow, put the Quant sister project's exported run output under `source_documents/`. Start OpenCode from the standards or destination workspace, not from inside `source_documents/`.
+
+Example portable layout:
+
+```text
+parent-folder/
+  opencode-quant-standards/             <-- start opencode here for this pack
+    AGENTS.md
+    CODEX.md
+    opencode.json
+    .opencode/
+      agents/
+      skills/
+    instructions/
+      playbooks/
+      project/
+      templates/
+    source_documents/                   <-- exported Quant output goes here
+      run_YYYY-MM-DD_HH-MM-SS_UTC/      <-- selected model run
+        START_HERE.md
+        artifact_manifest.json
+        config/
+          run_config.json
+        metadata/
+          metrics.json
+          statistical_tests.json
+          reproducibility_manifest.json
+          step_manifest.json
+        reports/
+          decision_summary.md
+          model_documentation_pack.md
+          validation_pack.md
+          run_report.md
+          interactive_report.html
+        tables/
+          diagnostics/
+          model_performance/
+          calibration/
+          backtesting/
+          explainability/
+          governance/
+          stability/
+        figures/                         <-- optional, only present when individual exports are enabled
+          png/
+          html/
+      supplemental/                      <-- optional non-run evidence
+        approvals/
+        monitoring/
+        model_inventory/
+        policy/
+        vendor/
+    output/                             <-- generated methodology package goes here
+      model_methodology.docx
+      evidence_index.md
+      image_inventory.md
+      open_items.md
+```
+
+How OpenCode should use this layout:
+
+- Start from `opencode-quant-standards/` or from the destination repo root that contains this pack.
+- Read `source_documents/run_*/` or `source_documents/quant_runs/run_*/` for empirical model evidence, diagnostics, metrics, generated reports, and optional figures.
+- Read `source_documents/supplemental/` only when extra approval, monitoring, model inventory, policy, or vendor evidence is needed.
+- Select a Quant run by user instruction, by the configured path in [instructions/project/01-repository-context.md](instructions/project/01-repository-context.md), or by the latest suitable `run_*` folder under `source_documents/`.
+- Write the generated `.docx`, evidence index, image inventory, and open-items list under `output/`, `docs/model_methodology/`, or another approved output path, not under `source_documents/`.
+- If `figures/png/` is empty or absent, use `reports/interactive_report.html` as the visual reference and either request screenshot approval or request a new Quant run with PNG figure exports enabled.
+
 ## How The Premade Pieces Work Together
 
 The normal flow is:
@@ -280,6 +450,7 @@ The normal flow is:
 4. The agent loads deeper playbooks only if the task requires them.
 5. Skills are loaded only when needed for workflow-specific structure.
 6. Subagents are invoked manually by `@mention` or automatically through OpenCode's task system when permissions allow.
+7. For SR 11-7 methodology work using Quant outputs, the agent loads [instructions/project/08-quant-output-integration.md](instructions/project/08-quant-output-integration.md), selects a Quant run from `source_documents/`, and writes the generated DOCX package outside `source_documents/`.
 
 This separation is intentional:
 
@@ -299,7 +470,7 @@ Use cases:
 - load `promotion-readiness` when a change may affect merge, release, or production readiness
 - load `feature-contract` when you need explicit schema or feature semantics
 - load `deliverables-check` when you need to know what artifacts should exist
-- load `sr11-7-methodology-doc` when drafting or gap-checking a model methodology document
+- load `sr11-7-methodology-doc` when drafting, gap-checking, or assembling a DOCX model methodology document from Quant run outputs under `source_documents/`
 
 Use skills for:
 
@@ -363,8 +534,10 @@ Use `@quant-implementer` for:
 
 Use `@model-methodology-writer` for:
 
-- drafting SR 11-7-style methodology documents
+- drafting SR 11-7-style methodology documents as DOCX files
 - stitching together evidence from repository artifacts and supplied documents
+- using Quant sister-project run outputs under `source_documents/` as empirical evidence
+- selecting and captioning relevant exported figures or report images
 - maintaining section-level evidence gaps and open items
 - separating developer assertions from validation findings and approvals
 
@@ -376,10 +549,22 @@ The workflow is centered on:
 
 - [instructions/playbooks/06-model-methodology-documentation.md](instructions/playbooks/06-model-methodology-documentation.md)
 - [instructions/templates/04-sr11-7-model-methodology-template.md](instructions/templates/04-sr11-7-model-methodology-template.md)
+- [instructions/project/08-quant-output-integration.md](instructions/project/08-quant-output-integration.md)
 - [sr11-7-methodology-doc](.opencode/skills/sr11-7-methodology-doc/SKILL.md)
 - [model-methodology-writer](.opencode/agents/model-methodology-writer.md)
 
-When drafting these documents, the LLM should look for `source_documents/` first. That folder is the default corpus for model inventory records, development notes, data lineage, validation evidence, approvals, monitoring plans, vendor materials, and prior versions. If a repo uses a different folder, set that path in [instructions/project/01-repository-context.md](instructions/project/01-repository-context.md).
+When drafting these documents, the LLM should look for `source_documents/` first. That folder is the default corpus for the exported Quant run bundle. If extra non-run evidence is needed, put it under `source_documents/supplemental/`. If a repo uses a different folder, set that path in [instructions/project/01-repository-context.md](instructions/project/01-repository-context.md).
+
+When drafting from the Quant sister project output, the LLM should use the selected run folder under `source_documents/run_*` or `source_documents/quant_runs/run_*` for empirical model evidence. The key files are `START_HERE.md`, `artifact_manifest.json`, `reports/decision_summary.md`, `reports/model_documentation_pack.md`, `reports/validation_pack.md`, `reports/run_report.md`, `config/run_config.json`, `metadata/metrics.json`, and the exported `tables/` groups. The Quant run input evidence should not be edited.
+
+The expected methodology package is:
+
+- `model_methodology.docx`
+- evidence index
+- image inventory
+- open-items list
+
+The DOCX should include relevant images only when they support a material claim. Prefer exported PNG/JPEG files from `figures/png`. If the selected Quant run has no standalone image files, use `reports/interactive_report.html` as the visual reference and either request screenshot approval or request a new run with individual PNG figure exports enabled.
 
 The template consolidates the user-provided table of contents into a cleaner document flow across:
 
@@ -409,7 +594,7 @@ Examples of manual use:
 - `@quant-reviewer review the validation split logic`
 - `@quant-data-auditor inspect the point-in-time join assumptions`
 - `@quant-implementer add a regression test for duplicate entity-timestamp rows`
-- `@model-methodology-writer draft the model context and data analysis sections from the supplied artifacts`
+- `@model-methodology-writer draft the DOCX methodology package from the selected Quant run under source_documents`
 
 Recommended delegation patterns in this pack:
 
@@ -529,7 +714,8 @@ Use [CODEX.md](CODEX.md) when running this pack with Codex. It tells Codex to:
 - treat `opencode.json` as OpenCode-only configuration
 - treat `.opencode/skills/*/SKILL.md` files as workflow prompt modules
 - treat `.opencode/agents/*.md` files as role prompt modules
-- inspect `source_documents/` first for SR 11-7-style methodology documentation
+- inspect `source_documents/` first for exported Quant run output used in SR 11-7-style methodology documentation
+- inspect [instructions/project/08-quant-output-integration.md](instructions/project/08-quant-output-integration.md) when using Quant sister-project outputs, figures, or DOCX methodology-package rules
 
 Codex should not assume OpenCode runtime features are available. In a Codex-only workflow:
 
@@ -542,6 +728,7 @@ For SR 11-7-style methodology documentation in Codex, read:
 
 - [instructions/playbooks/06-model-methodology-documentation.md](instructions/playbooks/06-model-methodology-documentation.md)
 - [instructions/templates/04-sr11-7-model-methodology-template.md](instructions/templates/04-sr11-7-model-methodology-template.md)
+- [instructions/project/08-quant-output-integration.md](instructions/project/08-quant-output-integration.md)
 - [.opencode/skills/sr11-7-methodology-doc/SKILL.md](.opencode/skills/sr11-7-methodology-doc/SKILL.md)
 - [.opencode/agents/model-methodology-writer.md](.opencode/agents/model-methodology-writer.md)
 
@@ -616,6 +803,7 @@ instructions/
     05-failure-modes-and-red-flags.md
     06-deliverables-matrix.md
     07-codex-compatibility.md
+    08-quant-output-integration.md
   templates/
     01-standard-response-format.md
     02-model-review-template.md

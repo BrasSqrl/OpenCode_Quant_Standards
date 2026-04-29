@@ -27,9 +27,12 @@ For SR 11-7-style methodology documentation:
 
 - read `instructions/playbooks/06-model-methodology-documentation.md`
 - read `instructions/templates/04-sr11-7-model-methodology-template.md`
+- read `instructions/project/08-quant-output-integration.md` when Quant sister project output, run folders, images, or DOCX generation are part of the task
 - inspect `source_documents/` first
+- treat `source_documents/` as the intended location for exported Quant run bundles
 - use `.opencode/skills/sr11-7-methodology-doc/SKILL.md` as additional drafting rules
 - use `.opencode/agents/model-methodology-writer.md` as role guidance
+- write generated DOCX files, derived images, evidence indexes, and open-items files only to `output/`, `docs/model_methodology/`, or approved output paths, not to `source_documents/`
 
 ## Codex Limitations Relative To OpenCode
 
@@ -44,5 +47,6 @@ When using Codex outside OpenCode:
 
 - Follow repository facts over generic pack guidance.
 - Do not fabricate evidence, metrics, approvals, or validation findings.
+- For methodology documentation, report the selected Quant run ID, generated DOCX path, evidence-index path, and image-inventory path when applicable.
 - Report when an OpenCode-only feature is being approximated manually.
 - Keep OpenCode files intact unless the user explicitly asks to remove OpenCode support.

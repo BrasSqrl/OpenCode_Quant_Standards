@@ -52,10 +52,12 @@ Minimum expected artifacts:
 
 Minimum expected artifacts:
 
-- completed methodology document using the approved table of contents
+- completed methodology document as `.docx` using the approved table of contents
 - evidence index linking material claims to source artifacts
+- image inventory for included, excluded, converted, or referenced figures
 - open-items table for missing evidence and pending approvals
 - explicit list of sections marked not applicable and the basis for each
+- selected Quant run ID and source-artifact path when Quant sister project outputs are used
 - regulatory-currency note if SR 11-7 is requested without confirming successor guidance or internal MRM policy applicability
 
 ## Operator Rule

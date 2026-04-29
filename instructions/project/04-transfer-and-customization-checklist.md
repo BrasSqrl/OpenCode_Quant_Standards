@@ -35,7 +35,11 @@ Use this checklist when copying this standards pack into a new repository.
 - allowed or restricted external tools
 - governing model methodology documentation standard and template version
 - approved documentation output locations and evidence-index requirements
-- `source_documents/` folder location for model methodology and technical documentation evidence
+- `source_documents/` folder location for exported Quant run bundles used as model methodology evidence
+- expected Quant run-bundle layout under `source_documents/`
+- supplemental evidence subfolders for approvals, monitoring, inventory, policy, or vendor materials when needed
+- run-selection rule when multiple Quant run bundles exist under `source_documents/`
+- DOCX output path, image-inventory format, and figure or screenshot handling rules
 
 ## Do Not Customize Unless You Have A Clear Reason
 

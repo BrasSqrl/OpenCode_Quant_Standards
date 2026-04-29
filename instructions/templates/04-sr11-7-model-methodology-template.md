@@ -6,10 +6,25 @@ Important:
 
 - Follow the institution's approved template if one is provided.
 - Treat this file as a drafting scaffold, not a regulatory safe harbor.
+- The default deliverable is a `.docx` file with stable heading styles, section numbering, tables, embedded figures where supported, and appendices.
 - If evidence is missing, keep the relevant section and mark it with `[EVIDENCE NEEDED: ...]`.
 - If a topic is not applicable, write `[NOT APPLICABLE - BASIS: ...]`.
 - Maintain an evidence index linking material claims to source artifacts.
+- Maintain an image inventory for all included, excluded, converted, or referenced figures.
 - Do not invent approvals, validation findings, monitoring thresholds, model history, or regulatory applicability.
+- Every embedded figure must have a figure number, caption, interpretation, and source artifact path.
+
+## DOCX Front Matter
+
+Include when drafting the final `.docx`:
+
+- document title
+- model name, inventory ID, version, and run ID where applicable
+- document owner and draft status
+- effective date or draft date
+- governing template or policy reference
+- table of contents placeholder if the DOCX generator cannot update Word fields directly
+- regulatory-currency note when SR 11-7 is referenced without confirmed current internal policy treatment
 
 ## 1 Executive Summary and Model Identification
 
@@ -28,6 +43,12 @@ Include:
 - approval status, effective challenge summary, and open approval conditions
 - vendor or third-party dependency summary, if applicable
 
+Potential visual evidence:
+
+- final model performance summary chart
+- model decision or readiness scorecard
+- key limitation or open-issue summary table
+
 ## 2 Business Context, Scope, and Interconnectedness
 
 Purpose: explain the business problem, model hypothesis, population, boundaries, and connected model ecosystem.
@@ -41,6 +62,12 @@ Include:
 - frequency of use and reporting requirements
 - upstream data sources, feeder models, related models, downstream models, and overlays
 - consumer compliance, fair and responsible banking, or regulatory approval considerations, if applicable
+
+Potential visual evidence:
+
+- model ecosystem map
+- process or decision-flow diagram
+- upstream and downstream dependency map
 
 ## 3 Data, Population, and Preparation
 
@@ -56,6 +83,13 @@ Include:
 - key statistics for original data, final modeling data, and important segments
 - comparison of original population, development sample, validation sample, and final production population
 - data controls, input controls, reconciliation checks, and production data dependencies
+
+Potential visual evidence:
+
+- data flow chart
+- missingness or data-quality chart
+- population split or segment distribution chart
+- distribution-shift or feature-drift chart
 
 ## 4 Methodology and Model Development
 
@@ -75,6 +109,13 @@ Include:
 - explainability method and feature-importance evidence, if applicable
 - model update, recalibration, redevelopment, or benchmarking approach, if applicable
 
+Potential visual evidence:
+
+- model-design diagram
+- feature-selection or coefficient chart
+- feature-importance, PDP, ICE, ALE, or marginal-effect chart
+- scorecard points, WOE, binning, or reason-code chart when applicable
+
 ## 5 Validation, Performance, and Outcomes Analysis
 
 Purpose: consolidate evidence that the model is conceptually sound, empirically supported, independently challenged, and performing within acceptable thresholds.
@@ -91,6 +132,14 @@ Include:
 - threshold breaches, exceptions, overrides, and unresolved validation findings
 - limitations of validation evidence and compensating controls
 
+Potential visual evidence:
+
+- ROC, precision-recall, lift, gain, or KS chart
+- calibration chart
+- backtesting or outcomes-analysis chart
+- challenger or benchmark comparison chart
+- segment-performance or sensitivity chart
+
 ## 6 Assumptions, Limitations, Weaknesses, and Use Constraints
 
 Purpose: make model risk visible and connect limitations to allowed use, controls, monitoring, and management reporting.
@@ -103,6 +152,12 @@ Include:
 - compensating controls, overlays, adjustments, or management judgment
 - residual risks requiring management awareness
 - required remediation, redevelopment triggers, or restrictions on use
+
+Potential visual evidence:
+
+- limitation-to-control mapping table
+- sensitivity or stress-test chart
+- open-issue severity table
 
 ## 7 Implementation, Systems Integration, and Production Controls
 
@@ -120,6 +175,12 @@ Include:
 - change management, release management, rollback, and incident procedures
 - vendor documentation, third-party contingency plans, and Coupa or third-party risk information, if applicable
 
+Potential visual evidence:
+
+- implementation architecture diagram
+- batch or real-time workflow diagram
+- control map or reconciliation flow
+
 ## 8 User Procedures, Reporting, and Management Use
 
 Purpose: show how model outputs are consumed, reported, interpreted, and controlled by business users.
@@ -132,6 +193,12 @@ Include:
 - override procedures, overlay governance, and manual adjustment controls
 - end user committee name, references, and decision rights
 - training, communication, and handoff requirements for model users
+
+Potential visual evidence:
+
+- management-report sample
+- output interpretation guide or decision-threshold table
+- override or escalation process flow
 
 ## 9 Ongoing Monitoring and Model Lifecycle Management
 
@@ -147,6 +214,13 @@ Include:
 - overlays, temporary adjustments, and management action triggers
 - periodic review, annual review, recalibration, redevelopment, retirement, and change-log requirements
 
+Potential visual evidence:
+
+- PSI, drift, or stability chart
+- metric monitoring dashboard excerpt
+- threshold and escalation table
+- monitoring workflow diagram
+
 ## 10 Governance, Approvals, and Open Items
 
 Purpose: make ownership, accountability, approval status, and unresolved work explicit.
@@ -159,6 +233,12 @@ Include:
 - related MRAs, audit findings, regulatory commitments, or policy exceptions
 - open issues, remediation owners, due dates, and blocking status
 - final readiness decision or distribution restrictions
+
+Potential visual evidence:
+
+- approval workflow diagram
+- open-items table
+- evidence-coverage heatmap or traceability summary
 
 ## Appendix A Evidence Index
 
@@ -188,3 +268,11 @@ Use this crosswalk only when a reviewer needs to map the consolidated structure 
 | 8 User Procedures, Reporting, and Management Use | user guidelines, management reporting, output controls, overlays, EUC references |
 | 9 Ongoing Monitoring and Model Lifecycle Management | monitoring plan, risk factors, metrics, frequency, escalation, overlays, model update lifecycle |
 | 10 Governance, Approvals, and Open Items | approvals, effective challenge, MRAs, open items, ownership, readiness decision |
+
+## Appendix D Image Inventory
+
+Use this appendix or a sidecar file to track visual evidence.
+
+| Figure ID | Methodology Section | Source Artifact | Caption | Included In DOCX | Notes |
+| --- | --- | --- | --- | --- | --- |
+| TBD | TBD | TBD | TBD | TBD | TBD |

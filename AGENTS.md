@@ -62,6 +62,7 @@ Read these files only when the task requires them:
 - For debugging, optimization, or refactoring: `@instructions/playbooks/04-debugging-and-refactoring.md`
 - For data pipelines, joins, or feature engineering: `@instructions/playbooks/05-data-pipelines-and-feature-engineering.md`
 - For drafting a model methodology document aligned to SR 11-7 or successor guidance: `@instructions/playbooks/06-model-methodology-documentation.md`
+- For methodology drafting from the Quant sister project output, DOCX generation, or image use from exported runs: `@instructions/project/08-quant-output-integration.md`
 - For common failure modes and quantitative red flags: `@instructions/project/05-failure-modes-and-red-flags.md`
 - For required review artifacts and release evidence: `@instructions/project/06-deliverables-matrix.md`
 - For Codex-specific usage guidance: `@instructions/project/07-codex-compatibility.md`
@@ -80,3 +81,4 @@ After copying this pack into a real repo, update `instructions/project/01-reposi
 - data sensitivity and access constraints
 - repo-specific modeling conventions
 - approval or review requirements
+- methodology documentation source paths, Quant run paths, DOCX output location, and image-handling rules when applicable

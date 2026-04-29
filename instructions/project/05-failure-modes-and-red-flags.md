@@ -45,6 +45,10 @@ Use this file when the task involves model review, debugging suspicious performa
 - AI/ML, explainability, fair lending, vendor, or regulatory approval sections are treated as boilerplate
 - model purpose, target, horizon, population, model version, or effective date differ across sections
 - SR 11-7 is named as the governing standard without confirming current agency guidance or internal MRM policy
+- DOCX methodology output is replaced by Markdown without documenting why the required format could not be produced
+- figures are embedded without captions, source paths, interpretation, or an image inventory
+- Quant run warnings, failed checks, blocking issues, or challenger-model findings are omitted from the methodology narrative
+- generated documentation, screenshots, or converted figures are written back into `source_documents/` instead of an approved output folder
 
 ## Response Pattern
 

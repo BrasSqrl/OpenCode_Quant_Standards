@@ -81,9 +81,17 @@ Important:
 
 - Governing documentation standard: SR 11-7 format retained by internal MRM policy; verify whether SR 26-2 updates are required before final approval
 - Methodology document owner: Quantitative Research Lead
-- Approved output location: `docs/model_methodology`
+- Required output format: DOCX plus sidecar Markdown evidence index, image inventory, and open-items log
+- Approved methodology DOCX output path: `docs/model_methodology/equity_signal_methodology.docx`
+- Approved sidecar output location: `docs/model_methodology/supporting_artifacts`
 - Source documents folder: `source_documents`
-- Source artifacts for methodology documents: `source_documents/model_inventory`, `source_documents/development`, `source_documents/data_lineage`, `source_documents/validation`, `source_documents/monitoring`, `source_documents/approvals`, plus `configs`, `notebooks`, and `reports`
+- Source documents contents: exported Quant run bundle at `source_documents/run_*` or `source_documents/quant_runs/run_*`
+- Supplemental methodology evidence: `source_documents/supplemental/model_inventory`, `source_documents/supplemental/monitoring`, `source_documents/supplemental/approvals`, `source_documents/supplemental/policy`, and `source_documents/supplemental/vendor` when needed
+- Quant run selection rule: use the explicit run folder supplied by the model owner; if absent, use the latest successful `run_*` folder under `source_documents`
+- Quant run folder: leave blank until a run is selected
+- Quant image source rule: prefer `artifact_manifest.json` figure entries and `figures/png`; if unavailable, use `reports/interactive_report.html` as reference and request screenshot approval or a new run with PNG figure exports enabled
+- Image inclusion rule: embed only relevant PNG/JPEG figures with figure number, caption, interpretation, and source path
 - Required evidence index format: appendix evidence table with section, claim, source artifact, owner, and status
+- Required image inventory format: sidecar Markdown table plus Appendix D when figures are embedded
 - Required reviewer sign-off before distribution: Model Risk Management reviewer and strategy owner
 - Sections that may be omitted only if not applicable: predecessor model, related MRA, vendor model, external data, regulatory approval, overlays
