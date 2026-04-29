@@ -2,6 +2,8 @@
 
 This repository is a portable control pack for `opencode`-based development workflows. Its purpose is to make large-language-model behavior more consistent, more auditable, and less repo-specific by default when teams are building, reviewing, validating, or maintaining Python-based quantitative models.
 
+OpenCode is the primary target. The pack also includes a small Codex compatibility layer so Codex can use the same Markdown corpus effectively when OpenCode-specific skills, subagents, and permissions are not available.
+
 The pack is designed to be copied into the root of another repository and then lightly customized. It combines:
 
 - always-on repository rules
@@ -9,6 +11,7 @@ The pack is designed to be copied into the root of another repository and then l
 - on-demand skills for repeated workflows
 - custom agents and subagents for role-shaped work
 - permission patterns for safer automatic delegation
+- Codex-compatible guidance for consuming the same files as prompt modules
 
 The result is not a model itself. It is a control layer for how OpenCode should behave inside a destination repository.
 
@@ -90,6 +93,23 @@ What it does not do:
 - hold the full qualitative guidance corpus
 - substitute for real repository facts
 
+### `CODEX.md`
+
+[CODEX.md](CODEX.md) is the Codex compatibility guide.
+
+What it does:
+
+- tells Codex how to consume this OpenCode-first pack
+- explains which files are Codex-relevant
+- clarifies that OpenCode skills and agents should be treated as prompt modules when Codex is the runtime
+- routes Codex to the SR 11-7 methodology workflow and `source_documents/` evidence folder
+
+What it does not do:
+
+- replace `AGENTS.md`
+- make `opencode.json` Codex-native configuration
+- make OpenCode subagents or permissions automatically available in Codex
+
 ### `instructions/`
 
 The [instructions](instructions) directory holds the Markdown corpus that `AGENTS.md` and `opencode.json` rely on.
@@ -135,6 +155,7 @@ The following components are already built and can usually be copied unchanged i
 ### Root Control Files
 
 - [AGENTS.md](AGENTS.md): root router and core behavioral contract
+- [CODEX.md](CODEX.md): Codex compatibility guide
 - [opencode.json](opencode.json): OpenCode configuration, instruction loading, and permission patterns
 
 ### Core Instruction Files
@@ -167,6 +188,7 @@ The following components are already built and can usually be copied unchanged i
 - [instructions/project/04-transfer-and-customization-checklist.md](instructions/project/04-transfer-and-customization-checklist.md): checklist for moving the pack into a real repo
 - [instructions/project/05-failure-modes-and-red-flags.md](instructions/project/05-failure-modes-and-red-flags.md): common quantitative red flags
 - [instructions/project/06-deliverables-matrix.md](instructions/project/06-deliverables-matrix.md): required artifacts by task type
+- [instructions/project/07-codex-compatibility.md](instructions/project/07-codex-compatibility.md): Codex-specific usage guidance for this OpenCode-first pack
 
 ### Included Skills
 
@@ -217,6 +239,7 @@ At minimum, you should update:
 - data sensitivity and storage constraints
 - review, sign-off, and release requirements
 - methodology documentation standard, owner, source artifacts, output location, evidence-index format, and approval path
+- default `source_documents/` location for model methodology and technical documentation evidence
 
 If you fail to update that file, the pack still works as a generic control layer, but it loses most of the repo-specific value.
 
@@ -237,12 +260,13 @@ These components are intended to be reused largely unchanged across repos:
 
 1. Copy the entire contents of this project into the root of the destination repository.
 2. Confirm that `AGENTS.md` and `opencode.json` sit at that repo root.
-3. Edit [instructions/project/01-repository-context.md](instructions/project/01-repository-context.md) and replace the bracketed prompts with real repo facts.
-4. Validate the exact commands you entered in that file.
-5. Confirm the listed paths actually exist in the destination repo.
-6. Start OpenCode from the destination repo root.
-7. Check that the root rules load, the local skills appear, and the custom agents appear in `@` autocomplete.
-8. Commit the pack and the repo-context customizations so every user gets the same baseline.
+3. If Codex will also be used, confirm that `CODEX.md` is at the same repo root.
+4. Edit [instructions/project/01-repository-context.md](instructions/project/01-repository-context.md) and replace the bracketed prompts with real repo facts.
+5. Validate the exact commands you entered in that file.
+6. Confirm the listed paths actually exist in the destination repo.
+7. Start OpenCode from the destination repo root.
+8. Check that the root rules load, the local skills appear, and the custom agents appear in `@` autocomplete.
+9. Commit the pack and the repo-context customizations so every user gets the same baseline.
 
 Use [instructions/project/04-transfer-and-customization-checklist.md](instructions/project/04-transfer-and-customization-checklist.md) as the operational transfer checklist.
 
@@ -354,6 +378,8 @@ The workflow is centered on:
 - [instructions/templates/04-sr11-7-model-methodology-template.md](instructions/templates/04-sr11-7-model-methodology-template.md)
 - [sr11-7-methodology-doc](.opencode/skills/sr11-7-methodology-doc/SKILL.md)
 - [model-methodology-writer](.opencode/agents/model-methodology-writer.md)
+
+When drafting these documents, the LLM should look for `source_documents/` first. That folder is the default corpus for model inventory records, development notes, data lineage, validation evidence, approvals, monitoring plans, vendor materials, and prior versions. If a repo uses a different folder, set that path in [instructions/project/01-repository-context.md](instructions/project/01-repository-context.md).
 
 The template consolidates the user-provided table of contents into a cleaner document flow across:
 
@@ -492,6 +518,33 @@ If you want model-specific tuning later, the usual places are:
 
 This pack intentionally leaves those mostly generic so it can be transplanted without assuming a provider.
 
+## Codex Compatibility
+
+Codex can use this repository because the main control surface is Markdown and the root [AGENTS.md](AGENTS.md) file is compatible with Codex-style project instructions.
+
+Use [CODEX.md](CODEX.md) when running this pack with Codex. It tells Codex to:
+
+- start with `AGENTS.md`
+- read [instructions/project/01-repository-context.md](instructions/project/01-repository-context.md)
+- treat `opencode.json` as OpenCode-only configuration
+- treat `.opencode/skills/*/SKILL.md` files as workflow prompt modules
+- treat `.opencode/agents/*.md` files as role prompt modules
+- inspect `source_documents/` first for SR 11-7-style methodology documentation
+
+Codex should not assume OpenCode runtime features are available. In a Codex-only workflow:
+
+- skill permissions in `opencode.json` do not apply
+- automatic OpenCode subagent delegation does not apply
+- `@agent` examples are conceptual unless the Codex environment supports comparable agent spawning
+- `.opencode` frontmatter is descriptive metadata unless the runtime explicitly supports it
+
+For SR 11-7-style methodology documentation in Codex, read:
+
+- [instructions/playbooks/06-model-methodology-documentation.md](instructions/playbooks/06-model-methodology-documentation.md)
+- [instructions/templates/04-sr11-7-model-methodology-template.md](instructions/templates/04-sr11-7-model-methodology-template.md)
+- [.opencode/skills/sr11-7-methodology-doc/SKILL.md](.opencode/skills/sr11-7-methodology-doc/SKILL.md)
+- [.opencode/agents/model-methodology-writer.md](.opencode/agents/model-methodology-writer.md)
+
 ## What Maintainers Should Extend Carefully
 
 Extend this pack carefully in these areas:
@@ -524,6 +577,7 @@ That is enough for a strong starting point.
 
 ```text
 AGENTS.md
+CODEX.md
 opencode.json
 README.md
 .opencode/
@@ -561,6 +615,7 @@ instructions/
     04-transfer-and-customization-checklist.md
     05-failure-modes-and-red-flags.md
     06-deliverables-matrix.md
+    07-codex-compatibility.md
   templates/
     01-standard-response-format.md
     02-model-review-template.md
@@ -568,9 +623,9 @@ instructions/
     04-sr11-7-model-methodology-template.md
 ```
 
-## External OpenCode Concepts This README Depends On
+## External Concepts This README Depends On
 
-This pack relies on current OpenCode behavior for:
+This pack relies on current OpenCode and Codex behavior for:
 
 - `AGENTS.md` rule loading
 - `opencode.json` instruction loading
@@ -578,12 +633,16 @@ This pack relies on current OpenCode behavior for:
 - project-local agent discovery from `.opencode/agents/*.md`
 - subagent invocation by `@mention`
 - task permission patterns for automatic subagent invocation
+- Codex project guidance from `AGENTS.md`
 
 Official references:
 
 - [OpenCode Rules](https://opencode.ai/docs/rules)
 - [OpenCode Skills](https://opencode.ai/docs/skills)
 - [OpenCode Agents](https://opencode.ai/docs/agents)
+- [OpenAI Codex cloud](https://platform.openai.com/docs/codex/overview)
+- [OpenAI Codex CLI getting started](https://help.openai.com/en/articles/11096431-openai-codex-ci-getting-started)
+- [OpenAI Codex AGENTS.md documentation](https://github.com/openai/codex/blob/main/docs/agents_md.md)
 - [Federal Reserve SR 11-7](https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm)
 - [Federal Reserve SR 26-2](https://www.federalreserve.gov/supervisionreg/srletters/SR2602.htm)
 

@@ -1,6 +1,6 @@
 # Enterprise Quantitative Python Guidance
 
-This repository contains shared instructions for `opencode` sessions that support enterprise Python work for quantitative model development, validation, and review.
+This repository contains shared instructions for `opencode` sessions that support enterprise Python work for quantitative model development, validation, and review. It also includes compatibility guidance for Codex agents.
 
 ## External File Loading
 
@@ -45,6 +45,13 @@ Flag important conflicts instead of silently blending them together.
 3. Use explicit repo commands and conventions when they are available.
 4. If essential repo facts are missing, state the gap and proceed with the least risky assumption.
 
+## Codex Compatibility
+
+- Codex should treat this `AGENTS.md` file as the primary project instruction file.
+- Codex should read `CODEX.md` when available for runtime-specific usage guidance.
+- Codex should treat `.opencode/skills/*/SKILL.md` and `.opencode/agents/*.md` as reusable prompt modules, not as OpenCode runtime features.
+- OpenCode remains the primary target; do not remove or weaken OpenCode-specific files for Codex compatibility.
+
 ## Task Routing
 
 Read these files only when the task requires them:
@@ -57,6 +64,7 @@ Read these files only when the task requires them:
 - For drafting a model methodology document aligned to SR 11-7 or successor guidance: `@instructions/playbooks/06-model-methodology-documentation.md`
 - For common failure modes and quantitative red flags: `@instructions/project/05-failure-modes-and-red-flags.md`
 - For required review artifacts and release evidence: `@instructions/project/06-deliverables-matrix.md`
+- For Codex-specific usage guidance: `@instructions/project/07-codex-compatibility.md`
 - For a consistent final structure: `@instructions/templates/01-standard-response-format.md`
 - For a formal model review memo: `@instructions/templates/02-model-review-template.md`
 - For an experiment plan or result summary: `@instructions/templates/03-experiment-note-template.md`

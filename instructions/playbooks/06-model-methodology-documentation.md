@@ -40,7 +40,16 @@ The methodology document should make the model understandable, challengeable, re
 
 ## Source Material To Gather First
 
-Before drafting, inspect or request the available artifacts:
+Before drafting, inspect the `source_documents/` folder when it exists. Treat it as the default evidence corpus for model methodology and technical documentation unless `instructions/project/01-repository-context.md` specifies a different documentation source path.
+
+Use this precedence for source material:
+
+1. `source_documents/`
+2. the source-artifact path named in `instructions/project/01-repository-context.md`
+3. repository artifacts such as `docs/`, `notebooks/`, `reports/`, `configs/`, and `src/`
+4. user-supplied files or pasted evidence
+
+Within the available source material, inspect or request:
 
 - model inventory entry
 - business use case and intended-use statement
@@ -59,7 +68,7 @@ Before drafting, inspect or request the available artifacts:
 ## Drafting Sequence
 
 1. Confirm the governing documentation standard, template version, and intended audience.
-2. Build an evidence inventory from the repo and supplied artifacts.
+2. Build an evidence inventory from `source_documents/`, the repo, and supplied artifacts.
 3. Create a consolidated document skeleton using `instructions/templates/04-sr11-7-model-methodology-template.md`.
 4. Fill sections only from available evidence.
 5. Add `[EVIDENCE NEEDED]` markers for missing support.

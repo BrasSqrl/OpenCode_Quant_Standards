@@ -36,6 +36,7 @@ Use this skill when the user asks for:
 ## Working Rules
 
 - Do not invent evidence, approvals, validation conclusions, controls, monitoring thresholds, or model history.
+- Look for a `source_documents/` folder first and treat it as the default source corpus unless repository context says otherwise.
 - Use `[EVIDENCE NEEDED: ...]` for unsupported sections.
 - Use `[NOT APPLICABLE - BASIS: ...]` only when non-applicability is supported.
 - Maintain section numbering and headings unless the user provides a controlling template.
@@ -45,6 +46,8 @@ Use this skill when the user asks for:
 - Treat fair lending, consumer compliance, AI/ML, vendor, and regulatory approval sections as substantive, not boilerplate.
 
 ## Source Artifacts To Seek
+
+Start with `source_documents/` when present. Then inspect repo-local artifacts or user-supplied materials as needed.
 
 - model inventory entry
 - model development scripts, notebooks, and configs

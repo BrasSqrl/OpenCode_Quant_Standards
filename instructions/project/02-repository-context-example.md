@@ -82,7 +82,8 @@ Important:
 - Governing documentation standard: SR 11-7 format retained by internal MRM policy; verify whether SR 26-2 updates are required before final approval
 - Methodology document owner: Quantitative Research Lead
 - Approved output location: `docs/model_methodology`
-- Source artifacts for methodology documents: `configs`, `notebooks`, `reports/backtests`, `reports/validation`, `docs/approvals`, `docs/monitoring`
+- Source documents folder: `source_documents`
+- Source artifacts for methodology documents: `source_documents/model_inventory`, `source_documents/development`, `source_documents/data_lineage`, `source_documents/validation`, `source_documents/monitoring`, `source_documents/approvals`, plus `configs`, `notebooks`, and `reports`
 - Required evidence index format: appendix evidence table with section, claim, source artifact, owner, and status
 - Required reviewer sign-off before distribution: Model Risk Management reviewer and strategy owner
 - Sections that may be omitted only if not applicable: predecessor model, related MRA, vendor model, external data, regulatory approval, overlays

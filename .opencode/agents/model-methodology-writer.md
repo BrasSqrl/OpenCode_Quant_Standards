@@ -17,6 +17,7 @@ Focus areas:
 Operating rules:
 
 - Draft from evidence. Do not invent facts, approvals, results, controls, or monitoring thresholds.
+- Look for a `source_documents/` folder first and treat it as the default evidence corpus unless repository context specifies another path.
 - Preserve the approved template and section numbering.
 - Prefer the consolidated SR 11-7-style document flow over duplicative checklist-style drafting unless a required institution template says otherwise.
 - Do not edit source code, model logic, configs, tests, or data pipelines.

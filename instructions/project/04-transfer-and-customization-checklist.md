@@ -7,6 +7,7 @@ Use this checklist when copying this standards pack into a new repository.
 - Copy the full pack to the repository root.
 - Confirm `AGENTS.md` is at the root that `opencode` will start from.
 - Confirm `opencode.json` is at the same root as `AGENTS.md`.
+- If Codex will also be used, confirm `CODEX.md` is at the same root as `AGENTS.md`.
 - Fill in `instructions/project/01-repository-context.md` with real repo facts.
 - Remove or replace any placeholder bracketed entries.
 - Verify the listed commands actually work in the target repo.
@@ -21,6 +22,7 @@ Use this checklist when copying this standards pack into a new repository.
 - Run one read-only task with `quant-plan` or `@quant-reviewer`.
 - Run one implementation task with `quant-build` or the default `build` agent.
 - Check whether the permission prompts match your intended risk tolerance.
+- For Codex, ask it to read `CODEX.md` and run one read-only task that uses a relevant playbook.
 
 ## Customize First If These Change By Repo
 
@@ -33,6 +35,7 @@ Use this checklist when copying this standards pack into a new repository.
 - allowed or restricted external tools
 - governing model methodology documentation standard and template version
 - approved documentation output locations and evidence-index requirements
+- `source_documents/` folder location for model methodology and technical documentation evidence
 
 ## Do Not Customize Unless You Have A Clear Reason
 
